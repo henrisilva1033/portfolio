@@ -412,3 +412,79 @@ body {
   height: 15px;
 } */
 
+
+/* ==============================
+   MOBILE RESPONSIVE DESIGN
+   ============================== */
+
+/* Para telas menores que 768px (celulares) */
+@media (max-width: 768px) {
+
+  body {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* Container principal em coluna */
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  /* Sidebar deixa de ser fixa e vai para o topo */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .sidebar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  /* Conteúdo principal ocupa a largura total */
+  .content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Cards de projetos em coluna */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 340px;
+    margin-bottom: 20px;
+  }
+
+  /* Textos menores e alinhados */
+  h1, h2, h3, p {
+    text-align: center;
+  }
+
+  .network-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .network-text p {
+    font-size: 1rem;
+  }
+
+  /* Ajuste do canvas de grafos */
+  #graphCanvas {
+    width: 100vw;
+    height: 50vh;
+  }
+}
+
+
