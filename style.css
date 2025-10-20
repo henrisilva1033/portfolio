@@ -1,0 +1,718 @@
+/* ===========================================================
+   ESTILO GERAL DO PORTFÓLIO
+   =========================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* ativa o scroll suave */
+  scroll-padding-top: 80px; /* cria um espaço equivalente à altura da navbar */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* ===========================================================
+   NAVBAR FIXA
+   =========================================================== */
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 9999;
+  transition: all 0.4s ease; /* animação suave */
+  background-color: none; /* cor inicial na seção de capa */
+  justify-content:center;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+  justify-content:center;
+  width: 100%;
+}
+
+.navbar ul li a {
+  color: #000000; /* cor inicial das letras */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.navbar ul li a:hover {
+  color: #00b4d8;
+}
+
+/* ========================
+   Navbar após scroll
+   ======================== */
+.navbar.scrolled {
+  background-color: rgba(114, 113, 113, 0.85); /* cinza transparente */
+  color: #fff;
+}
+
+.navbar.scrolled ul li a {
+  color: #fff;
+}
+
+
+/* ===========================================================
+   SEÇÃO INTERATIVA DE GRAFOS
+   =========================================================== */
+#network {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff; /* fundo branco */
+  overflow: hidden;
+}
+
+#graphCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.network-text {
+  position: relative;
+  z-index: 2;
+  color: #000;
+  text-align: center;
+  top: 35%;
+}
+
+.network-text h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.network-text p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Seta animada para baixo */
+/* Seta animada para baixo */
+.scroll-down {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  z-index: 10;
+}
+
+.scroll-down .arrow {
+  border: solid rgba(114, 113, 113, 0.8); /* cor igual à navbar scrolled */
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 10px;
+  transform: rotate(45deg);
+  animation: bounce 1.8s infinite;
+}
+
+/* 🔹 Animação corrigida (só eixo Y, sem mover X) */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(45deg) translateY(10px);
+  }
+  60% {
+    transform: rotate(45deg) translateY(5px);
+  }
+}
+
+
+/* ===========================================================
+   LAYOUT PRINCIPAL (sidebar fixa + conteúdo)
+   =========================================================== */
+
+.content {
+  margin-left: 200px;
+  padding: 60px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin-right: auto;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* Sidebar fixa à esquerda */
+.sidebar {
+  width: 300px;
+  background-color: #fff;
+  /* border-right: 1px solid #ddd; */
+  padding: 30px;
+  position:absolute;
+  top: 102vh;
+  bottom: 0;
+  /* overflow-y: auto; */
+}
+
+/* Foto de perfil */
+.foto-perfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.foto-perfil img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; /* garante corte correto */
+  border-radius: 50%; /* deixa redondo */
+  border: 3px solid #ececec; /* borda opcional */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+/* .foto-perfil img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+} */
+
+
+/* Nome e função */
+.sidebar h2 {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #302f2f;
+}
+
+.sidebar .role {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.sidebar .location {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Links da sidebar */
+.sidebar .links {
+  list-style: none;
+  margin-top: 25px;
+  padding: 0;
+}
+
+.sidebar .links li {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.sidebar .links a {
+  color: #0077b6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.sidebar .links a:hover {
+  color: #111;
+}
+
+/* ===========================================================
+   CONTEÚDO PRINCIPAL (à direita da sidebar)
+   =========================================================== */
+.content {
+  margin-left: 310px;
+  padding: 60px;
+  background-color: #fff;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #363636;
+  border-bottom: 2px solid #265058;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Texto padrão */
+.section p,
+.section li {
+  color: #444;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+/* Itens de experiência e formação */
+.exp-item,
+.edu-item {
+  margin-bottom: 30px;
+}
+
+.exp-item h3,
+.edu-item h3 {
+  font-weight: 600;
+  color: #363636;
+  font-size: 1.2rem;
+}
+
+.subinfo,
+.local {
+  font-style: italic;
+  color: #777;
+  font-size: 0.95rem;
+  margin: 3px 0 8px;
+}
+
+/* ===========================================================
+   PROJETOS (cards responsivos)
+   =========================================================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 40px; 
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;   /* preenche o espaço sem distorcer */
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+
+/* --> Imagens nas pags dos Projetos */
+
+.projectimg01 {
+  max-width: 800px;   /* largura máxima igual ao conteúdo */
+  margin: 0 auto 15px; /* centraliza horizontalmente */
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projectimg01 img {
+  width: 100%;         /* ocupa toda a largura do container */
+  height: auto;        /* mantém a proporção original da imagem */
+  display: block;      /* remove pequenos gaps em alguns navegadores */
+  border-radius: 8px;  /* arredonda bordas */
+}
+
+.projectimg02 {
+  max-width: 800px;  
+  margin: 0 auto 15px; 
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projectimg02 img {
+  width: 100%; 
+  height: auto;  
+  display: block;     
+  border-radius: 8px; 
+}
+
+.projectimg03 {
+  max-width: 800px;
+  margin: 0 auto 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projectimg03 img {
+  width: 100%;   
+  height: auto;      
+  display: block;     
+  border-radius: 8px; 
+}
+
+.projectimg04 {
+  max-width: 800px;
+  margin: 0 auto 15px; 
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projectimg04 img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Botão estilizado para ver detalhes */
+.btn-detalhes {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #c4c1c1; /* cinza */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-detalhes:hover {
+  background-color: #555555;
+  transform: translateY(-2px);
+}
+
+/* ===========================================================
+   FORMULÁRIO DE CONTATO
+   =========================================================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #00b4d8;
+}
+
+.contact-form button {
+  background-color: #00b4d8;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #0096c7;
+}
+
+/* ===========================================================
+   SEÇÃO DE HABILIDADES (mantida e integrada)
+   =========================================================== */
+/* #parte2 {
+  width: 350px;
+}
+
+.habilidades {
+  margin-left: 40px;
+  height: auto;
+  background-color: #fff;
+  color: #000000;
+  padding: 25px;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.35);
+  border-radius: 40px 40px 40px 0;
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+}
+
+.barrateste {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.evolucao {
+  width: 100px;
+  height: 12px;
+  border-radius: 100px;
+  background: #fff;
+} */
+
+/* Ajustes individuais */
+/* .evolucao1 { margin-left: 75px; }
+.evolucao2 { margin-left: 53px; }
+.evolucao3 { margin-left: 20px; }
+.evolucao4 { margin-left: 40px; }
+.evolucao5 { margin-left: 60px; }
+.evolucao6 { margin-left: 30px; }
+.evolucao7 { margin-left: 30px; }
+.evolucao8 { margin-left: 10px; }
+.evolucao9 { margin-left: 32px; }
+.evolucao10 { margin-left: 30px; }
+.evolucao11 { margin-left: 37px; }
+.evolucao12 { margin-left: 78px; }
+.evolucao13 { margin-left: 80px; }
+.evolucao14 { margin-left: 68px; }
+.evolucao15 { margin-left: 80px; }
+
+.over {
+  background-color: rgb(177, 39, 39);
+  color: rgb(177, 39, 39);
+  width: 15px;
+  height: 15px;
+} */
+
+
+
+/* ===========================================================
+   🔹 MODO MOBILE (até 768px)
+   =========================================================== */
+@media (max-width: 768px) {
+
+  .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 9999;
+  transition: all 0.4s ease; /* animação suave */
+  background-color: none; /* cor inicial na seção de capa */
+  justify-content:center;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+  justify-content:center;
+  width: 100%;
+}
+
+.navbar ul li a {
+  color: #000000; /* cor inicial das letras */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 9px;
+  transition: color 0.3s;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.navbar ul li a:hover {
+  color: #00b4d8;
+}
+
+/* ========================
+   Navbar após scroll
+   ======================== */
+.navbar.scrolled {
+  background-color: rgba(114, 113, 113, 0.85); /* cinza transparente */
+  color: #fff;
+}
+
+.navbar.scrolled ul li a {
+  color: #fff;
+}
+
+
+
+   /* .nav-links {
+    display: none; 
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgba(80, 80, 80, 0.95);
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    position: absolute;
+    right: 20px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  } */
+
+  /* Remove a sidebar */
+  .sidebar {
+    display: none;
+  }
+
+  /* Centraliza todo o conteúdo */
+  .content {
+    margin: 0 auto;
+    padding: 25px 15px;
+    max-width: 600px;
+    text-align: justify;
+  }
+
+  body {
+    padding: 0 10px;
+  }
+
+/* Foto de perfil */
+.foto-perfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.foto-perfil img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; /* garante corte correto */
+  border-radius: 50%; /* deixa redondo */
+  border: 3px solid #ececec; /* borda opcional */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Cabeçalho interativo (grafos) */
+#network {
+  height: 100vh;
+  padding: 0 10px;
+}
+
+.network-text h1 {
+  font-size: 1.5rem;
+}
+
+.network-text p {
+  font-size: 1rem;
+}
+
+
+  /* Títulos das seções */
+  .section h2 {
+    font-size: 1.4rem;
+    border-bottom: 2px solid #265058;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  /* Texto e listas */
+  .section p,
+  .section li {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify; 
+  }
+
+  /* Cards de projetos em 1 coluna */
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 25px;
+  }
+
+  .card {
+    text-align: left;
+    padding: 20px;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* Botão */
+  .btn-detalhes {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #c4c1c1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: 0.3s;
+  }
+
+  .btn-detalhes:hover {
+    background-color: #555555;
+    transform: translateY(-2px);
+  }
+
+  /* Imagens dos projetos */
+  .projectimg01,
+  .projectimg02,
+  .projectimg03,
+  .projectimg04 {
+    max-width: 100%;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+  }
+
+  /* Formulário de contato */
+  .contact-form {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+}
+

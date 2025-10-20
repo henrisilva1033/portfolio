@@ -1,0 +1,422 @@
+/* ===========================================================
+   ESTILO GERAL DAS PÁGINAS DE PROJETO
+   =========================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* ===========================================================
+   🔹 NAVBAR FIXA (com links à direita)
+   =========================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: right; /* separa back à esquerda e links à direita */
+  padding: 0 40px;
+  z-index: 9999;
+  background-color: rgba(114, 113, 113, 0.85);
+  transition: all 0.4s ease;
+}
+
+/* Botão de voltar */
+/* .navbar .back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  font-size: 1rem;
+}
+
+.navbar .back-btn::before {
+  content: "←";
+  font-size: 1.2rem;
+}
+
+.navbar .back-btn:hover {
+  color: #00b4d8;
+} */
+
+/* Lista de links da navbar (direita) */
+.navbar .nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.navbar .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar .nav-links li a:hover {
+  color: #00b4d8;
+}
+
+
+/* ===========================================================
+   SEÇÃO INTERATIVA DE GRAFOS
+   =========================================================== */
+#network {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+#graphCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.network-text {
+  position: relative;
+  z-index: 2;
+  color: #000;
+  text-align: center;
+  top: 35%;
+}
+
+.network-text h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.network-text p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* ===========================================================
+   SETA ANIMADA PARA BAIXO
+   =========================================================== */
+.scroll-down {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  z-index: 10;
+}
+
+.scroll-down .arrow {
+  border: solid rgba(114, 113, 113, 0.8);
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 10px;
+  transform: rotate(45deg);
+  animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(45deg) translateY(10px);
+  }
+  60% {
+    transform: rotate(45deg) translateY(5px);
+  }
+}
+
+/* ===========================================================
+   LAYOUT PRINCIPAL (sem sidebar, conteúdo centralizado)
+   =========================================================== */
+.sidebar {
+  display: none !important;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+}
+
+.content {
+  margin: 120px auto 50px auto;
+  padding: 60px 40px;
+  max-width: 900px;
+  background-color: #fff;
+  text-align: justify;
+}
+
+/* ===========================================================
+   SEÇÕES E CONTEÚDO PRINCIPAL
+   =========================================================== */
+.section {
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #363636;
+  border-bottom: 2px solid #265058;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.section p,
+.section li {
+  color: #444;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.exp-item,
+.edu-item {
+  margin-bottom: 30px;
+}
+
+.exp-item h3,
+.edu-item h3 {
+  font-weight: 600;
+  color: #363636;
+  font-size: 1.2rem;
+}
+
+.subinfo,
+.local {
+  font-style: italic;
+  color: #777;
+  font-size: 0.95rem;
+  margin: 3px 0 8px;
+}
+
+/* ===========================================================
+   PROJETOS (cards)
+   =========================================================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Imagens internas dos projetos */
+.projectimg01,
+.projectimg02,
+.projectimg03,
+.projectimg04 {
+  max-width: 800px;
+  margin: 0 auto 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projectimg01 img,
+.projectimg02 img,
+.projectimg03 img,
+.projectimg04 img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Botão "Ver Detalhes" */
+.btn-detalhes {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #c4c1c1;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.btn-detalhes:hover {
+  background-color: #555555;
+  transform: translateY(-2px);
+}
+
+/* ===========================================================
+   FORMULÁRIO DE CONTATO
+   =========================================================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #00b4d8;
+}
+
+.contact-form button {
+  background-color: #00b4d8;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #0096c7;
+}
+
+/* ===========================================================
+   🔹 MODO MOBILE (até 768px)
+   =========================================================== */
+@media (max-width: 768px) {
+    
+/* Navbar geral */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    z-index: 9999;
+    transition: all 0.4s ease;
+}
+
+/* Lista da navbar */
+.nav ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Links da navbar - Tamanho da fonte corrigido */
+.nav ul li a{
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 9px; /* ajuste aqui o tamanho desejado */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: color 0.3s;
+}
+
+/* Efeito hover */
+.nav li a:hover {
+    color: #00b4d8;
+}
+
+
+
+  /* Ajuste de conteúdo */
+  .content {
+    margin-top: 80px; /* para não ficar escondido pela navbar */
+    padding: 25px 15px;
+    max-width: 600px;
+    text-align: justify;
+  }
+
+  /* Corrige espaçamento do título */
+  .section h2 {
+    font-size: 1.3rem;
+    margin-top: 10px;   /* reduz o espaço acima */
+    margin-bottom: 8px; /* aproxima do texto */
+    text-align: left;
+  }
+
+  .section p,
+  .section li {
+    font-size: 1rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card img {
+    height: auto;
+  }
+
+  .projectimg01,
+  .projectimg02,
+  .projectimg03,
+  .projectimg04 {
+    max-width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+}
+
